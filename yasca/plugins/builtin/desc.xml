@@ -1,0 +1,580 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+	<!-- 1 -->
+	<Encryption>
+		<strong>
+			<severity>1</severity>
+			<category>Encryption</category>
+			<desc>
+    #AES:AES is very fast and secure, and it is the de facto standard for symmetric encryption.  
+    
+    #AESWrap : is kind of Cipher Algorithm Names
+    
+    #Camellia_(cipher): With today's technology, such an attack would take years to compute.It’s very secure. 
+    
+    #PKCS1Padding and PKCS1Padding is kind of Cipher Algorithm Padding
+    
+    #blowfish:its keys should be chosen to be big enough to withstand a brute force attack (e.g. at least 16 bytes).
+    
+    #SKIPJACK : Acceptable through 2010 by doc sp800
+			</desc>
+			<refs>
+				<ref name='Based on package "Crypto.Cipher"'>http://pythonhosted.org/pycrypto/Crypto.Cipher-module.html</ref>
+				<ref name='Based on package "Cipher" , the usage is "Cipher c = Cipher.getInstance("DES/CBC/PKCS5Padding")"'>https://docs.oracle.com/javase/7/docs/technotes/guides/security/crypto/CryptoSpec.html#trans</ref>
+				<ref name="Cipher Type which based on command : openssl enc -$cipher-type">https://www.openssl.org/docs/apps/enc.html</ref>
+                <ref name='Based on package "KeyGenerator" , the useage is "KeyGenerator kgen=KeyGenerator.getInstance("AES")"'>http://docs.oracle.com/javase/7/docs/api/javax/crypto/KeyGenerator.html</ref>
+                <ref name="Camellia_(cipher)">http://en.wikipedia.org/wiki/Camellia_(cipher)</ref>
+                <ref name="DESX algorithm">http://en.wikipedia.org/wiki/DES-X</ref>
+			</refs>
+		</strong>
+        
+		<unknow>
+			<severity>2</severity>
+			<category>Encryption</category>
+			<desc>
+    #DES3:The effective key length is respectively 112 or 168 bits.
+
+    #ARC4: One problem of ARC4 is that it does not take a nonce or an IV. If it is required to encrypt multiple messages with the same long-term key, a distinct independent nonce must be created for each message, and a short-term key must be derived from the combination of the long-term key and the nonce. Due to the weak key scheduling algorithm of RC2, the combination must be carried out with a complex function (e.g. a cryptographic hash) and not by simply concatenating key and nonce.New designs should not use ARC4. A good alternative is AES (Crypto.Cipher.AES) in any of the modes that turn it into a stream cipher (OFB, CFB, or CTR).
+
+    #blowfish:its keys should be chosen to be big enough to withstand a brute force attack (e.g. at least 16 bytes).
+
+    #CAST: CAST is deemed to be cryptographically secure, but its usage is not widespread. Keys of sufficient length should be used to prevent brute force attacks (128 bits are recommended).
+
+    #PKCS1_OAP: RSA encryption protocol according to PKCS#1 OAEP
+
+    #PKCS1_v1_5: If you are designing a new protocol, consider using the more robust PKCS#1 OAEP.
+    #The Function is alse used in Digital Signatures.
+            
+    #Cipher.getInstance：JAVA Function about Security, Need to be specified manually
+    
+    #Blowfish in XXX mode and blowfish:its keys should be chosen to be big enough to withstand a brute force attack (e.g. at least 16 bytes).
+
+    #Three key triple DES EDE in XXX mode.Acceptable through 2010
+
+    #128(default) bit RC4
+
+    #idea-xxx: IDEA in CFB mode. 
+    
+    #openssl xxx: openssl command line
+
+            </desc>
+			<refs>
+                <ref name='Based on package "Crypto.Cipher"'>http://pythonhosted.org/pycrypto/Crypto.Cipher-module.html</ref>
+				<ref name='Based on package "Cipher" , the usage is "Cipher c = Cipher.getInstance("DES/CBC/PKCS5Padding")"'>https://docs.oracle.com/javase/7/docs/technotes/guides/security/crypto/CryptoSpec.html#trans</ref>
+				<ref name="Cipher Type which based on command : openssl enc -$cipher-type">https://www.openssl.org/docs/apps/enc.html</ref>
+				<ref name="IDEA in CFB mode">http://en.wikipedia.org/wiki/International_Data_Encryption_Algorithm</ref>
+				<ref name="seed in xxx mode">http://en.wikipedia.org/wiki/SEED</ref>
+				<ref name="CAST OR CAST5 in XXX mode">http://en.wikipedia.org/wiki/CAST-128</ref>
+			</refs>
+		</unknow>
+        
+		<weak>
+			<severity>3</severity>
+			<category>Encryption</category>
+			<desc>
+    #DES: Acceptable through 2010 Restricted use from 2011 through 2015 Disallowed after 2015
+
+    #ARC2: called Alleged RC2 (ARC2),New designs should not use RC2.
+
+    #XOR: Do not use it for real applications!
+    
+    #DES-XXX: Two key triple DES EDE in XXX mode, Disallowed after 2015
+    
+    #DES should not be used for new designs. Use AES.
+            </desc>
+			<refs>
+				<ref name='Based on package "Crypto.Cipher"'>http://pythonhosted.org/pycrypto/Crypto.Cipher-module.html</ref>
+				<ref name='Based on package "Cipher" , the usage is "Cipher c = Cipher.getInstance("DES/CBC/PKCS5Padding")"'>https://docs.oracle.com/javase/7/docs/technotes/guides/security/crypto/CryptoSpec.html#trans</ref>
+				<ref name="Cipher Type which based on command : openssl enc -$cipher-type">https://www.openssl.org/docs/apps/enc.html</ref>
+			</refs>
+		</weak>
+
+	</Encryption>
+
+
+	<!-- 2 -->
+	<DigitalSignatures>
+		<strong>
+			<severity>1</severity>
+			<category>Digital Signatures</category>
+			<desc>
+    #DSA: The problem is believed to be difficult, and it has been proved such (and therefore secure) for more than 30 years.
+    
+    #ElGamal: The security of the ElGamal signature scheme is based (like DSA) on the discrete logarithm problem (DLP). Both DLP and CDH problem are believed to be difficult, and they have been proved such (and therefore secure) for more than 30 years.
+    
+    #RSA: The algorithm has withstood attacks for 30 years, and it is therefore considered reasonably secure for new designs.
+    
+    #The SHA-2 family consists of six hash functions with digests (hash values) that are 224, 256, 384 or 512 bits: SHA-224, SHA-256, SHA-384, SHA-512, SHA-512/224, SHA-512/256. Although SHA-2 bears some similarity to the SHA-1 algorithm, these attacks have not been successfully extended to SHA-2
+    
+            </desc>
+			<refs>
+				<ref name='Based on package "Crypto.Signature"'>http://pythonhosted.org/pycrypto/Crypto.Signature-module.html</ref>
+                <ref name='Based on package "Crypto.PublicKey"'>http://pythonhosted.org/pycrypto/Crypto.PublicKey-module.html</ref>
+                <ref name='Based on package "KeyFactory" , the useage is "KeyFactory keyFactory = KeyFactory.getInstance("DSA")"'>http://docs.oracle.com/javase/7/docs/api/java/security/KeyFactory.html</ref>
+                <ref name='Based on package "KeyPairGenerator" , the useage is "KeyPairGenerator keypairgen=KeyPairGenerator.getInstance()"'>http://docs.oracle.com/javase/7/docs/api/java/security/KeyPairGenerator.html</ref>
+                <ref name='Based on package "Signature" , the useage is "Signature instance = Signature.getInstance("SHA1withRSA")"'>http://docs.oracle.com/javase/7/docs/api/java/security/Signature.html</ref>
+                <ref name='DSA'>http://pythonhosted.org/pycrypto/Crypto.PublicKey.DSA-module.html</ref>
+                <ref name='ElGamal'>http://pythonhosted.org/pycrypto/Crypto.PublicKey.ElGamal-module.html</ref>
+                <ref name='RSA'>http://pythonhosted.org/pycrypto/Crypto.PublicKey.RSA-module.html</ref>
+                <ref name='SHA-2'>http://en.wikipedia.org/wiki/SHA-2</ref>
+			</refs>
+		</strong>
+        
+		<unknow>
+			<severity>2</severity>
+			<category>Digital Signatures</category>
+			<desc>
+    #KeyFactory.getInstance  and    Signature.getInstance
+    #java Function
+    
+            </desc>
+			<refs>
+				<ref name='Based on package "Crypto.Signature"'>http://pythonhosted.org/pycrypto/Crypto.Signature-module.html</ref>
+                <ref name='Based on package "Crypto.PublicKey"'>http://pythonhosted.org/pycrypto/Crypto.PublicKey-module.html</ref>
+                <ref name='Based on package "KeyFactory" , the useage is "KeyFactory keyFactory = KeyFactory.getInstance("DSA")"'>http://docs.oracle.com/javase/7/docs/api/java/security/KeyFactory.html</ref>
+                <ref name='Based on package "KeyPairGenerator" , the useage is "KeyPairGenerator keypairgen=KeyPairGenerator.getInstance()"'>http://docs.oracle.com/javase/7/docs/api/java/security/KeyPairGenerator.html</ref>
+                <ref name='Based on package "Signature" , the useage is "Signature instance = Signature.getInstance("SHA1withRSA")"'>http://docs.oracle.com/javase/7/docs/api/java/security/Signature.html</ref>
+                <ref name='PKCS1_PSS'>http://pythonhosted.org/pycrypto/Crypto.Signature-module.html</ref>
+			</refs>
+		</unknow>
+        
+		<weak>
+			<severity>3</severity>
+			<category>Digital Signatures</category>
+			<desc>
+    #In 2005, cryptanalysts found attacks on SHA-1 suggesting that the algorithm might not be secure enough for ongoing use.
+            </desc>
+			<refs>
+				<ref name='Based on package "Crypto.Signature"'>http://pythonhosted.org/pycrypto/Crypto.Signature-module.html</ref>
+                <ref name='Based on package "Crypto.PublicKey"'>http://pythonhosted.org/pycrypto/Crypto.PublicKey-module.html</ref>
+                <ref name='Based on package "KeyFactory" , the useage is "KeyFactory keyFactory = KeyFactory.getInstance("DSA")"'>http://docs.oracle.com/javase/7/docs/api/java/security/KeyFactory.html</ref>
+                <ref name='Based on package "KeyPairGenerator" , the useage is "KeyPairGenerator keypairgen=KeyPairGenerator.getInstance()"'>http://docs.oracle.com/javase/7/docs/api/java/security/KeyPairGenerator.html</ref>
+                <ref name='Based on package "Signature" , the useage is "Signature instance = Signature.getInstance("SHA1withRSA")"'>http://docs.oracle.com/javase/7/docs/api/java/security/Signature.html</ref>
+                <ref name='SHA-1'>http://en.wikipedia.org/wiki/SHA-1</ref>
+			</refs>
+		</weak>
+
+	</DigitalSignatures>
+
+
+	<!-- 3 -->
+	<RandomNumberGeneration>
+		<strong>
+			<severity>1</severity>
+			<category>Random Number Generation</category>
+			<desc>
+    #openssl
+    # Based on the command with "openssl rand"
+    
+    #openssl rand: openssl command line
+    
+    #RBGs specified in SP 800-90 (HASH, HMAC, CTR, DUAL_EC) and ANS X9.62-2005 (HMAC) is allowed
+    
+&lt;table class="table table-condensed table-striped" style="width:auto" &gt;
+&lt;tr&gt;&lt;td&gt;  test  &lt;/td&gt;&lt;td&gt;  test  &lt;/td&gt;&lt;td&gt;  test  &lt;/td&gt;&lt;td&gt;  test  &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;  test  &lt;/td&gt;&lt;td&gt;  test  &lt;/td&gt;&lt;td&gt;  test  &lt;/td&gt;&lt;td&gt;  test  &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;  test  &lt;/td&gt;&lt;td&gt;  test  &lt;/td&gt;&lt;td&gt;  test  &lt;/td&gt;&lt;td&gt;  test  &lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;td&gt;  test  &lt;/td&gt;&lt;td&gt;  test  &lt;/td&gt;&lt;td&gt;  test  &lt;/td&gt;&lt;td&gt;  test  &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;  test  &lt;/td&gt;&lt;td&gt;  test  &lt;/td&gt;&lt;td&gt;  test  &lt;/td&gt;&lt;td&gt;  test  &lt;/td&gt;&lt;/tr&gt;
+
+&lt;/table&gt;
+
+    </desc>
+			<refs>
+				<ref name='Based on python lib "random"'>https://docs.python.org/2/library/random.html</ref>
+                <ref name='Based on python lib "os"'>https://docs.python.org/2/library/os.html</ref>
+                <ref name='Based on package "Crypto.Random"'>http://pythonhosted.org/pycrypto/Crypto.Random-module.html</ref>
+                <ref name='Based on package "SecureRandom" , the useage is "SecureRandom random = new SecureRandom()"'>http://docs.oracle.com/javase/7/docs/api/java/security/SecureRandom.html</ref>
+
+			</refs>
+		</strong>
+        
+		<unknow>
+			<severity>2</severity>
+			<category>Random Number Generation</category>
+			<desc>
+    #openssl
+    # Based on the command with "openssl rand"
+            </desc>
+			<refs>
+				<ref name='Based on python lib "random"'>https://docs.python.org/2/library/random.html</ref>
+                <ref name='Based on python lib "os"'>https://docs.python.org/2/library/os.html</ref>
+                <ref name='Based on package "Crypto.Random"'>http://pythonhosted.org/pycrypto/Crypto.Random-module.html</ref>
+                <ref name='Based on package "SecureRandom" , the useage is "SecureRandom random = new SecureRandom()"'>http://docs.oracle.com/javase/7/docs/api/java/security/SecureRandom.html</ref>
+			</refs>
+		</unknow>
+        
+		<weak>
+			<severity>3</severity>
+			<category>Random Number Generation</category>
+			<desc>
+    #openssl
+    # Based on the command with "openssl rand"
+            </desc>
+			<refs>
+				<ref name='Based on python lib "random"'>https://docs.python.org/2/library/random.html</ref>
+                <ref name='Based on python lib "os"'>https://docs.python.org/2/library/os.html</ref>
+                <ref name='Based on package "Crypto.Random"'>http://pythonhosted.org/pycrypto/Crypto.Random-module.html</ref>
+                <ref name='Based on package "SecureRandom" , the useage is "SecureRandom random = new SecureRandom()"'>http://docs.oracle.com/javase/7/docs/api/java/security/SecureRandom.html</ref>
+                <ref name='use random.SystemRandom or random.random'>https://docs.python.org/2/library/random.html</ref>
+			</refs>
+		</weak>
+
+	</RandomNumberGeneration>
+
+	<!-- 4 -->
+	<KeyAgreement>
+		<strong>
+			<severity>1</severity>
+			<category>Key Agreement Using Diffie-Hellman and MQV</category>
+			<desc>
+    #openssl
+    # Command with 
+    #"openssl dh" is used for Diffie-Hellman Parameter Management
+    #"openssl dhparam" is used DH parameter manipulation and generation
+    
+    #DH and MQV schemes using finite fields. |p| = 2048 bits, and |q| = 224 or 256 bits is acceptable.
+    #DH and MQV schemes using elliptic curves. |n| ≥ 224 bits and h as specified in Table 5 is acceptable. 
+    #Non-compliant DH and MQV schemes using finite fields. |p| ≥ 2048 bits, and |q| ≥ 224 bits. Deprecated after 2013. All other values of p and q are disallowed after 2013
+    #Non-compliant DH and MQV schemes using elliptic curves. |n| ≥ 224. Deprecated after 2013. All other values of n are disallowed after 2013. 
+        
+            </desc>
+			<refs>
+				<ref name='Based on package "KeyAgreement" , the useage is "KeyAgreement aKeyAgree = KeyAgreement.getInstance()"'>http://docs.oracle.com/javase/7/docs/api/javax/crypto/KeyAgreement.html</ref>
+			</refs>
+		</strong>
+		<unknow>
+			<severity>2</severity>
+			<category>Key Agreement Using Diffie-Hellman and MQV</category>
+			<desc>
+    #openssl
+    # Command with 
+    #"openssl dh" is used for Diffie-Hellman Parameter Management
+    #"openssl dhparam" is used DH parameter manipulation and generation
+    
+    #http://en.wikipedia.org/wiki/Elliptic_curve_Diffie%E2%80%93Hellman
+    #http://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange
+    #http://en.wikipedia.org/wiki/MQV
+    
+    #KeyAgreement.getInstance : java functions
+            </desc>
+			<refs>
+				<ref name='Based on package "KeyAgreement" , the useage is "KeyAgreement aKeyAgree = KeyAgreement.getInstance()"'>http://docs.oracle.com/javase/7/docs/api/javax/crypto/KeyAgreement.html</ref>
+			</refs>
+		</unknow>
+		<weak>
+			<severity>3</severity>
+			<category>Key Agreement Using Diffie-Hellman and MQV</category>
+			<desc>
+    #openssl
+    # Command with 
+    #"openssl dh" is used for Diffie-Hellman Parameter Management
+    #"openssl dhparam" is used DH parameter manipulation and generation
+            </desc>
+			<refs>
+				<ref name='Based on package "KeyAgreement" , the useage is "KeyAgreement aKeyAgree = KeyAgreement.getInstance()"'>http://docs.oracle.com/javase/7/docs/api/javax/crypto/KeyAgreement.html</ref>
+			</refs>
+		</weak>
+
+	</KeyAgreement>
+
+	<!-- 5 -->
+	<KeyTransport>
+		<strong>
+			<severity>1</severity>
+			<category>Key Agreement and Key Transport Using RSA</category>
+			<desc>
+    #openssl
+    # Command with 
+    #"openssl genrsa" is used for generating an RSA private key
+    #"openssl rsa" is used for RSA key processing tool
+            </desc>
+			<refs>
+				<ref name="strong1">url1</ref>
+				<ref name="strong2">url2</ref>
+				<ref name="strong3">url3</ref>
+			</refs>
+		</strong>
+		<unknow>
+			<severity>2</severity>
+			<category>Key Agreement and Key Transport Using RSA</category>
+			<desc> desc Key Agreement and Key Transport Using RSA</desc>
+			<refs>
+				<ref name="unknow1">url1</ref>
+				<ref name="unknow2">url2</ref>
+				<ref name="unknow3">url3</ref>
+			</refs>
+		</unknow>
+		<weak>
+			<severity>3</severity>
+			<category>Key Agreement and Key Transport Using RSA</category>
+			<desc>desc Key Agreement and Key Transport Using RSA</desc>
+			<refs>
+				<ref name="weak1">url1</ref>
+				<ref name="weak2">url2</ref>
+				<ref name="weak3">url3</ref>
+			</refs>
+		</weak>
+
+	</KeyTransport>
+
+	<!-- 6 -->
+	<KeyWrapping>
+		<strong>
+			<severity>1</severity>
+			<category>Key Wrapping</category>
+			<desc>
+    #openssl
+    # Command with 
+    #"openssl dsa --passout (DSA key process tool)" ;
+    #"openssl rsa --passout (RSA key process tool)" ;
+    #"openssl gendsa (This generates a DSA private key)" ;
+    #"openssl genrsa (This generates a RSA private key)" ;
+    #"openssl pkcs12 (This allows PKCS#12 files (sometimes referred to as PFX files) to be created and parsed)" ;
+    # are all used to encrypt private key
+            
+    #AES:AES is very fast and secure, and it is the de facto standard for symmetric encryption.
+            </desc>
+			<refs>
+				<ref name='Based on package "Crypto.PublicKey"'>http://pythonhosted.org/pycrypto/Crypto.PublicKey-module.html</ref>
+                <ref name='Based on package "KeyGenerator" , the useage is "KeyGenerator kgen=KeyGenerator.getInstance("AES");"'>http://docs.oracle.com/javase/7/docs/api/javax/crypto/KeyGenerator.html</ref>
+                <ref name='Based on package "SecretKeyFactory" , the useage is "SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("DES")"'>http://docs.oracle.com/javase/7/docs/api/javax/crypto/SecretKeyFactory.html</ref>
+			</refs>
+		</strong>
+		<unknow>
+			<severity>2</severity>
+			<category>Key Wrapping</category>
+			<desc>
+    #openssl
+    # Command with 
+    #"openssl dsa --passout (DSA key process tool)" ;
+    #"openssl rsa --passout (RSA key process tool)" ;
+    #"openssl gendsa (This generates a DSA private key)" ;
+    #"openssl genrsa (This generates a RSA private key)" ;
+    #"openssl pkcs12 (This allows PKCS#12 files (sometimes referred to as PFX files) to be created and parsed)" ;
+    # are all used to encrypt private key
+            
+    #DES3:The effective key length is respectively 112 or 168 bits.
+            </desc>
+			<refs>
+				<ref name='Based on package "Crypto.PublicKey"'>http://pythonhosted.org/pycrypto/Crypto.PublicKey-module.html</ref>
+                <ref name='Based on package "KeyGenerator" , the useage is "KeyGenerator kgen=KeyGenerator.getInstance("AES");"'>http://docs.oracle.com/javase/7/docs/api/javax/crypto/KeyGenerator.html</ref>
+                <ref name='Based on package "SecretKeyFactory" , the useage is "SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("DES")"'>http://docs.oracle.com/javase/7/docs/api/javax/crypto/SecretKeyFactory.html</ref>
+			</refs>
+		</unknow>
+        
+		<weak>
+			<severity>3</severity>
+			<category>Key Wrapping</category>
+			<desc>
+    #openssl
+    # Command with 
+    #"openssl dsa --passout (DSA key process tool)" ;
+    #"openssl rsa --passout (RSA key process tool)" ;
+    #"openssl gendsa (This generates a DSA private key)" ;
+    #"openssl genrsa (This generates a RSA private key)" ;
+    #"openssl pkcs12 (This allows PKCS#12 files (sometimes referred to as PFX files) to be created and parsed)" ;
+    # are all used to encrypt private key
+            
+    #DES:Acceptable through 2010 Restricted use from 2011 through 2015 Disallowed after 2015
+            </desc>
+			<refs>
+				<ref name='Based on package "Crypto.PublicKey"'>http://pythonhosted.org/pycrypto/Crypto.PublicKey-module.html</ref>
+                <ref name='Based on package "KeyGenerator" , the useage is "KeyGenerator kgen=KeyGenerator.getInstance("AES");"'>http://docs.oracle.com/javase/7/docs/api/javax/crypto/KeyGenerator.html</ref>
+                <ref name='Based on package "SecretKeyFactory" , the useage is "SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("DES")"'>http://docs.oracle.com/javase/7/docs/api/javax/crypto/SecretKeyFactory.html</ref>
+			</refs>
+		</weak>
+
+	</KeyWrapping>
+
+	<!-- 7 -->
+	<DerivingAdditionalKeys>
+		<strong>
+			<severity>1</severity>
+			<category>Deriving Additional Keys from a Cryptographic Key</category>
+			<desc>
+    #openssl:
+    # Command with 
+    #"openssl dsa --passout (DSA key process tool)" ;
+    #"openssl rsa --passout (RSA key process tool)" ;
+    #"openssl gendsa (This generates a DSA private key)" ;
+    #"openssl genrsa (This generates a RSA private key)" ;
+    #"openssl pkcs12 (This allows PKCS#12 files (sometimes referred to as PFX files) to be created and parsed)" ;
+    # are all used to encrypt private key
+    
+    #KDF using HMAC-SHA-256
+    
+            </desc>
+			<refs>
+				<ref name='Based on package "Crypto.Protocol.KDF"'>http://pythonhosted.org/pycrypto/Crypto.Protocol.KDF-module.html</ref>
+                <ref name='Based on package "SecretKeyFactory" , the useage is "SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("DES")"'>http://docs.oracle.com/javase/7/docs/api/javax/crypto/SecretKeyFactory.html</ref>
+			</refs>
+		</strong>
+        
+		<unknow>
+			<severity>2</severity>
+			<category>Deriving Additional Keys from a Cryptographic Key</category>
+			<desc>
+    #openssl:
+    # Command with 
+    #"openssl dsa --passout (DSA key process tool)" ;
+    #"openssl rsa --passout (RSA key process tool)" ;
+    #"openssl gendsa (This generates a DSA private key)" ;
+    #"openssl genrsa (This generates a RSA private key)" ;
+    #"openssl pkcs12 (This allows PKCS#12 files (sometimes referred to as PFX files) to be created and parsed)" ;
+    # are all used to encrypt private key
+            </desc>
+			<refs>
+				<ref name='Based on package "Crypto.Protocol.KDF"'>http://pythonhosted.org/pycrypto/Crypto.Protocol.KDF-module.html</ref>
+                <ref name='Based on package "SecretKeyFactory" , the useage is "SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("DES")"'>http://docs.oracle.com/javase/7/docs/api/javax/crypto/SecretKeyFactory.html</ref>
+			</refs>
+		</unknow>
+		<weak>
+			<severity>3</severity>
+			<category>Deriving Additional Keys from a Cryptographic Key</category>
+			<desc>
+    #openssl:
+    # Command with 
+    #"openssl dsa --passout (DSA key process tool)" ;
+    #"openssl rsa --passout (RSA key process tool)" ;
+    #"openssl gendsa (This generates a DSA private key)" ;
+    #"openssl genrsa (This generates a RSA private key)" ;
+    #"openssl pkcs12 (This allows PKCS#12 files (sometimes referred to as PFX files) to be created and parsed)" ;
+    # are all used to encrypt private key
+            </desc>
+			<refs>
+				<ref name='Based on package "Crypto.Protocol.KDF"'>http://pythonhosted.org/pycrypto/Crypto.Protocol.KDF-module.html</ref>
+                <ref name='Based on package "SecretKeyFactory" , the useage is "SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("DES")"'>http://docs.oracle.com/javase/7/docs/api/javax/crypto/SecretKeyFactory.html</ref>
+			</refs>
+		</weak>
+
+	</DerivingAdditionalKeys>
+
+	<!-- 8 -->
+	<HashFunctions>
+		<strong>
+			<severity>1</severity>
+			<category>Hash Functions</category>
+			<desc>
+    #The SHA-2 family consists of six hash functions with digests (hash values) that are 224, 256, 384 or 512 bits: SHA-224, SHA-256, SHA-384, SHA-512, SHA-512/224, SHA-512/256. Although SHA-2 bears some similarity to the SHA-1 algorithm, these attacks have not been successfully extended to SHA-2    
+            </desc>
+			<refs>
+				<ref name='Based on package "Crypto.Hash"'>http://pythonhosted.org/pycrypto/Crypto.Hash-module.html</ref>
+                <ref name='Based on python lib "hashlib"'> https://docs.python.org/2/library/hashlib.html</ref>
+                <ref name='Based on extension lib "passlib.hash"'>https://pythonhosted.org/passlib/index.html</ref>
+                <ref name='Based on package "MessageDigest" , the useage is "MessageDigest md = MessageDigest.getInstance("MD5")" '>http://docs.oracle.com/javase/7/docs/api/java/security/MessageDigest.html</ref>
+                <ref name='Based on package "SaslServer"'>http://docs.oracle.com/javase/7/docs/api/javax/security/sasl/SaslServer.html</ref>
+                <ref name='Based on command "openssl dgst"'>https://www.openssl.org/docs/apps/dgst.html</ref>
+                <ref name='SHA-2'>http://en.wikipedia.org/wiki/SHA-2</ref>
+			</refs>
+		</strong>
+		<unknow>
+			<severity>2</severity>
+			<category>Hash Functions</category>
+			<desc>
+    #openssl xxx: openssl command line
+    
+    #In 2005, cryptanalysts found attacks on SHA-1 suggesting that the algorithm might not be secure enough for ongoing use.
+
+    #The SHA-2 family consists of six hash functions with digests (hash values) that are 224, 256, 384 or 512 bits: SHA-224, SHA-256, SHA-384, SHA-512, SHA-512/224, SHA-512/256. Although SHA-2 bears some similarity to the SHA-1 algorithm, these attacks have not been successfully extended to SHA-2
+            </desc>
+			<refs>
+				<ref name='Based on package "Crypto.Hash"'>http://pythonhosted.org/pycrypto/Crypto.Hash-module.html</ref>
+                <ref name='Based on python lib "hashlib"'> https://docs.python.org/2/library/hashlib.html</ref>
+                <ref name='Based on extension lib "passlib.hash"'>https://pythonhosted.org/passlib/index.html</ref>
+                <ref name='Based on package "MessageDigest" , the useage is "MessageDigest md = MessageDigest.getInstance("MD5")" '>http://docs.oracle.com/javase/7/docs/api/java/security/MessageDigest.html</ref>
+                <ref name='Based on package "SaslServer"'>http://docs.oracle.com/javase/7/docs/api/javax/security/sasl/SaslServer.html</ref>
+                <ref name='Based on command "openssl dgst"'>https://www.openssl.org/docs/apps/dgst.html</ref>
+                <ref name='SHA-1'>http://en.wikipedia.org/wiki/SHA-1</ref>
+                <ref name='SHA-2'>http://en.wikipedia.org/wiki/SHA-2</ref>
+			</refs>
+		</unknow>
+		<weak>
+			<severity>3</severity>
+			<category>Hash Functions</category>
+			<desc>
+    #In 2005, cryptanalysts found attacks on SHA-1 suggesting that the algorithm might not be secure enough for ongoing use.
+
+    #While it was not deemed a fatal weakness at the time, cryptographers began recommending the use of other algorithms, such as SHA-1—which has since been found to be vulnerable as well.
+    
+    #As such, MD5 is not suitable for applications like SSL certificates or digital signatures that rely on this property for digital security.
+    
+    #The SHA-2 family consists of six hash functions with digests (hash values) that are 224, 256, 384 or 512 bits: SHA-224, SHA-256, SHA-384, SHA-512, SHA-512/224, SHA-512/256. Although SHA-2 bears some similarity to the SHA-1 algorithm, these attacks have not been successfully extended to SHA-2
+
+    #While it was not deemed a fatal weakness at the time, cryptographers began recommending the use of other algorithms, such as SHA-1—which has since been found to be vulnerable as well.
+
+    #As such, MD5 is not suitable for applications like SSL certificates or digital signatures that rely on this property for digital security.
+    
+            </desc>
+			<refs>
+				<ref name='Based on package "Crypto.Hash"'>http://pythonhosted.org/pycrypto/Crypto.Hash-module.html</ref>
+                <ref name='Based on python lib "hashlib"'> https://docs.python.org/2/library/hashlib.html</ref>
+                <ref name='Based on extension lib "passlib.hash"'>https://pythonhosted.org/passlib/index.html</ref>
+                <ref name='Based on package "MessageDigest" , the useage is "MessageDigest md = MessageDigest.getInstance("MD5")" '>http://docs.oracle.com/javase/7/docs/api/java/security/MessageDigest.html</ref>
+                <ref name='Based on package "SaslServer"'>http://docs.oracle.com/javase/7/docs/api/javax/security/sasl/SaslServer.html</ref>
+                <ref name='Based on command "openssl dgst"'>https://www.openssl.org/docs/apps/dgst.html</ref>
+                <ref name='SHA-1'>http://en.wikipedia.org/wiki/SHA-1</ref>
+                <ref name='SHA-2'>http://en.wikipedia.org/wiki/SHA-2</ref>
+			</refs>
+		</weak>
+
+	</HashFunctions>
+
+	<!-- 9 -->
+	<MessageAuthenticationCodes>
+		<strong>
+			<severity>1</severity>
+			<category>Message Authentication Codes (MACs)</category>
+			<desc>
+    #The SHA-2 family consists of six hash functions with digests (hash values) that are 224, 256, 384 or 512 bits: SHA-224, SHA-256, SHA-384, SHA-512, SHA-512/224, SHA-512/256. Although SHA-2 bears some similarity to the SHA-1 algorithm, these attacks have not been successfully extended to SHA-2
+
+    #HMAC and CMAC  and  GMAC: Two types of message authentication code mechanisms using symmetric keys have been approved for use: those based on hash functions, and those based on block-cipher algorithms.
+            </desc>
+			<refs>
+				<ref name='Based on package "Crypto.Hash"'>http://pythonhosted.org/pycrypto/Crypto.Hash.HMAC-module.html</ref>
+                <ref name='Based on package "Mac" , the useage is "Mac sha256_HMAC = Mac.getInstance("HmacSHA256")"'>http://docs.oracle.com/javase/7/docs/api/javax/crypto/Mac.html</ref>
+                <ref name='Based on package "KeyGenerator" , the useage is "KeyGenerator kgen=KeyGenerator.getInstance()"'>http://docs.oracle.com/javase/7/docs/api/javax/crypto/KeyGenerator.html</ref>
+                <ref name='SHA-2'>http://en.wikipedia.org/wiki/SHA-2</ref>
+                <ref name='SIGNATURE_HMAC'>http://en.wikipedia.org/wiki/Hash-based_message_authentication_code</ref>
+			</refs>
+		</strong>
+        
+		<unknow>
+			<severity>2</severity>
+			<category>Message Authentication Codes (MACs)</category>
+			<desc>
+    #The cryptographic strength of the HMAC depends upon the cryptographic strength of the underlying hash function, the size of its hash output, and on the size and quality of the key.
+    
+    #CCM and GCM  : it’s also be used as cipher mode name in Encryption
+            </desc>
+			<refs>
+				<ref name='Based on package "Crypto.Hash"'>http://pythonhosted.org/pycrypto/Crypto.Hash.HMAC-module.html</ref>
+                <ref name='Based on package "Mac" , the useage is "Mac sha256_HMAC = Mac.getInstance("HmacSHA256")"'>http://docs.oracle.com/javase/7/docs/api/javax/crypto/Mac.html</ref>
+                <ref name='Based on package "KeyGenerator" , the useage is "KeyGenerator kgen=KeyGenerator.getInstance()"'>http://docs.oracle.com/javase/7/docs/api/javax/crypto/KeyGenerator.html</ref>
+                <ref name='HMAC'>http://en.wikipedia.org/wiki/Hash-based_message_authentication_code</ref>
+			</refs>
+		</unknow>
+        
+		<weak>
+			<severity>3</severity>
+			<category>Message Authentication Codes (MACs)</category>
+			<desc>
+    ##In 2005, cryptanalysts found attacks on SHA-1 suggesting that the algorithm might not be secure enough for ongoing use.
+    
+    #While it was not deemed a fatal weakness at the time, cryptographers began recommending the use of other algorithms, such as SHA-1—which has since been found to be vulnerable as well.
+    
+    #As such, MD5 is not suitable for applications like SSL certificates or digital signatures that rely on this property for digital security.
+            </desc>
+			<refs>
+				<ref name='Based on package "Crypto.Hash"'>http://pythonhosted.org/pycrypto/Crypto.Hash.HMAC-module.html</ref>
+                <ref name='Based on package "Mac" , the useage is "Mac sha256_HMAC = Mac.getInstance("HmacSHA256")"'>http://docs.oracle.com/javase/7/docs/api/javax/crypto/Mac.html</ref>
+                <ref name='Based on package "KeyGenerator" , the useage is "KeyGenerator kgen=KeyGenerator.getInstance()"'>http://docs.oracle.com/javase/7/docs/api/javax/crypto/KeyGenerator.html</ref>
+                <ref name='SHA-1'>http://en.wikipedia.org/wiki/SHA-1</ref>
+                <ref name='SHA-2'>http://en.wikipedia.org/wiki/SHA-2</ref>
+			</refs>
+		</weak>
+
+	</MessageAuthenticationCodes>
+
+</root>
